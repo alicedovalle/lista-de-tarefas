@@ -23,12 +23,18 @@ export default async function TaskList() {
                     rounded-lg"
                 >
                     <div>
-                        <h2 className="font-bold text-2xl">{task.title}</h2>
+                        <h2 
+                            className="font-bold text-2xl">
+                            {task.title}
+                        </h2>
                         <p>{task.description}</p>
                     </div>
                     <div className="flex gap-2">
                         <DeleteButton/>
-                        <Link className="text-[#ff66b3]" href={'/editTask/' + task.id}>
+                        <Link
+                            className="text-[#ff66b3]"
+                            href={'/editTask/' + task.id}
+                        >
                             <CiEdit size={32}/>
                         </Link>
                     </div>
