@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import React, { useState } from "react"
 
 export default function AddTask() {
@@ -20,10 +20,12 @@ export default function AddTask() {
                 body: JSON.stringify({ title, description }),
         })
         if (response.ok) {
-            router.push("/tarefinha-db")
+            router.push("/")
+        } else {
+            throw new Error("Falha ao criar a tarefa.")
         }
         } catch (error) {
-        console.error("Error:", error)
+        console.error("Error: ", error)
         } finally {
         setLoading(false)
         }
@@ -44,6 +46,7 @@ export default function AddTask() {
                 type="text"
                 name="title"
                 placeholder="Título da tarefa"
+                required
                 onChange={(e) => setTitle(e.target.value)}
             />
             
